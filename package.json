@@ -6,6 +6,7 @@
   "author": "Ryuta Tashiro <ryuta.tashiro@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "eslint": "^8.12.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.7",
     "prettier": "2.6.2"
@@ -14,6 +15,9 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }
