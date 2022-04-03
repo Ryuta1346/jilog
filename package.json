@@ -1,0 +1,23 @@
+{
+  "name": "jilog",
+  "version": "0.0.1",
+  "main": "src/index.ts",
+  "repository": "git@github.com:Ryuta1346/jilog.git",
+  "author": "Ryuta Tashiro <ryuta.tashiro@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.12.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "prettier": "2.6.2"
+  },
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}
