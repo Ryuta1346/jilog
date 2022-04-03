@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "git@github.com:Ryuta1346/jilog.git",
   "author": "Ryuta Tashiro <ryuta.tashiro@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "2.6.2"
+  }
 }
