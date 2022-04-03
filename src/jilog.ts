@@ -3,16 +3,16 @@ class JiLog {
   private infoLogCount = 0
   private warnLogCount = 0
   private errorLogCount = 0
-  private logTime: number = this.calcTime()
-  private infoTime: number = this.calcTime()
-  private warnTime: number = this.calcTime()
-  private errorTime: number = this.calcTime()
+  private logTime: number = window.performance.now()
+  private infoTime: number = window.performance.now()
+  private warnTime: number = window.performance.now()
+  private errorTime: number = window.performance.now()
 
   log(value: any, label = '', color = '') {
     console.log(
-      `%c[${label}][LOG: ${
-        this.logCount
-      }][TIME: ${this.calcPerformance()}]\n${JSON.stringify(value)} `,
+      `%c[${label}][LOG: ${this.logCount}][TIME: ${this.calcPerformance(
+        this.logTime
+      )}]\n${JSON.stringify(value)} `,
       `color: ${color}`
     )
     this.updateMeta('log')
@@ -20,9 +20,9 @@ class JiLog {
 
   info(value: any, label = '', color = 'green') {
     console.log(
-      `%c[${label}][INFO: ${
-        this.infoLogCount
-      }][TIME: ${this.calcPerformance()}]\n${JSON.stringify(value)} `,
+      `%c[${label}][INFO: ${this.infoLogCount}][TIME: ${this.calcPerformance(
+        this.infoTime
+      )}]\n${JSON.stringify(value)} `,
       `color: ${color}`
     )
     this.updateMeta('info')
@@ -30,9 +30,9 @@ class JiLog {
 
   warn(value: any, label = '', color = 'yellow') {
     console.log(
-      `%c[${label}][WARN: ${
-        this.warnLogCount
-      }][TIME: ${this.calcPerformance()}]\n${JSON.stringify(value)} `,
+      `%c[${label}][WARN: ${this.warnLogCount}][TIME: ${this.calcPerformance(
+        this.warnTime
+      )}]\n${JSON.stringify(value)} `,
       `color: ${color}`
     )
     this.warnLogCount += 1
@@ -42,9 +42,9 @@ class JiLog {
 
   error(value: any, label = '', color = 'red') {
     console.log(
-      `%c[${label}][ERROR: ${
-        this.errorLogCount
-      }][TIME: ${this.calcPerformance()}]\n${JSON.stringify(value)} `,
+      `%c[${label}][ERROR: ${this.errorLogCount}][TIME: ${this.calcPerformance(
+        this.errorTime
+      )}]\n${JSON.stringify(value)} `,
       `color: ${color}`
     )
     this.errorLogCount += 1
@@ -52,55 +52,48 @@ class JiLog {
     this.updateMeta('error')
   }
 
-  private calcPerformance(): string {
+  private calcPerformance(time: number): string {
     const performance = window.performance.now()
-    return `${performance - this.errorTime} milliseconds`
-  }
-
-  private calcTime() {
-    return typeof window !== 'undefined' ? window.performance.now() : Date.now()
+    return `${performance - time} milliseconds`
   }
 
   private updateMeta(type: string) {
     switch (type) {
       case 'log':
         this.logCount += 1
-        this.logTime = this.calcTime()
-        break
+        this.logTime = window.performance.now()
+        return
       case 'info':
         this.infoLogCount += 1
-        this.infoTime = this.calcTime()
-        break
+        this.infoTime = window.performance.now()
+        return
       case 'warn':
         this.warnLogCount += 1
-        this.warnTime = this.calcTime()
-        break
+        this.warnTime = window.performance.now()
+        return
       case 'error':
         this.errorLogCount += 1
-        this.errorTime = this.calcTime()
-        break
-      default:
-        this.logCount += 1
-        this.logTime = this.calcTime()
+        this.errorTime = window.performance.now()
+        return
     }
   }
 }
 
 const jilog = new JiLog()
 
-const jiLog = (value: any, label = '', color = '') => {
+const jiLog = (value: any, label?: string, color?: string) => {
   return jilog.log(value, label, color)
 }
 
-const jiInfo = (value: any, label = '', color = '') => {
+const jiInfo = (value: any, label?: string, color?: string) => {
   return jilog.info(value, label, color)
 }
 
-const jiWarn = (value: any, label = '', color = '') => {
+const jiWarn = (value: any, label?: string, color?: string) => {
   return jilog.warn(value, label, color)
 }
 
-const jiError = (value: any, label = '', color = '') => {
+const jiError = (value: any, label?: string, color?: string) => {
   return jilog.error(value, label, color)
 }
 
