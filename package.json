@@ -1,0 +1,8 @@
+{
+  "name": "jilog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Ryuta1346/jilog.git",
+  "author": "Ryuta Tashiro <ryuta.tashiro@gmail.com>",
+  "license": "MIT"
+}
