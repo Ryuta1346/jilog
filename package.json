@@ -12,7 +12,7 @@
     "tsc": "tsc",
     "build": "rollup -c",
     "pack": "cd lib && yarn pack",
-    "build&pack": "yarn run build && yarn run pack"
+    "build-pack": "yarn cache clean && yarn run build && yarn run pack"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
