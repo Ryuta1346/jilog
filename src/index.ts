@@ -1,1 +1,1 @@
-export { jilog } from './jilog'
+export { jiLog, jiInfo, jiWarn, jiError } from "./jilog";
