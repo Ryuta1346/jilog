@@ -1,2 +1,1 @@
-const hoge = 'aaaaa'
-console.log(hoge)
+export { jilog } from './jilog'
