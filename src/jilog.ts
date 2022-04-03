@@ -3,10 +3,10 @@ class JiLog {
   private infoLogCount = 0
   private warnLogCount = 0
   private errorLogCount = 0
-  private logTime: number = window.performance.now()
-  private infoTime: number = window.performance.now()
-  private warnTime: number = window.performance.now()
-  private errorTime: number = window.performance.now()
+  private logTime: number = this.calcTime()
+  private infoTime: number = this.calcTime()
+  private warnTime: number = this.calcTime()
+  private errorTime: number = this.calcTime()
 
   log(value: any, label = '', color = '') {
     console.log(
@@ -57,27 +57,31 @@ class JiLog {
     return `performance: ${performance - this.errorTime} milliseconds`
   }
 
+  private calcTime() {
+    return typeof window !== 'undefined' ? window.performance.now() : Date.now()
+  }
+
   private updateMeta(type: string) {
     switch (type) {
       case 'log':
         this.logCount += 1
-        this.logTime = window.performance.now()
+        this.logTime = this.calcTime()
         break
       case 'info':
         this.infoLogCount += 1
-        this.infoTime = window.performance.now()
+        this.infoTime = this.calcTime()
         break
       case 'warn':
         this.warnLogCount += 1
-        this.warnTime = window.performance.now()
+        this.warnTime = this.calcTime()
         break
       case 'error':
         this.errorLogCount += 1
-        this.errorTime = window.performance.now()
+        this.errorTime = this.calcTime()
         break
       default:
         this.logCount += 1
-        this.logTime = window.performance.now()
+        this.logTime = this.calcTime()
     }
   }
 }
