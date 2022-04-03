@@ -71,7 +71,7 @@ class JiLog {
   private updateMeta(type: string) {
     switch (type) {
       case 'log':
-        this.logCount = this.logCount + 1
+        this.logCount += 1
         this.logTime = window.performance.now()
         return
       case 'info':

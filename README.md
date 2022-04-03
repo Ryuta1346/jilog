@@ -1,8 +1,8 @@
 ## Motivation
 
-- I want to know in which order they are rendered.
-- I want to know what is in the value when the component is rendered.
-- I want to standardize console log customization.
+- Know in which order they are rendered.
+- Know what is in the value when the component is rendered.
+- Standardize console log customization.
 
 ## What Is jilog
 
