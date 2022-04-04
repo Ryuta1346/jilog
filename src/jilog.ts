@@ -92,19 +92,19 @@ class JiLog {
 
 const jilog = new JiLog()
 
-const jiLog = (value: any, label?: string, color?: string) => {
+const jiLog = (value?: any, label?: string, color?: string) => {
   return jilog.log(value, label, color)
 }
 
-const jiInfo = (value: any, label?: string, color?: string) => {
+const jiInfo = (value?: any, label?: string, color?: string) => {
   return jilog.info(value, label, color)
 }
 
-const jiWarn = (value: any, label?: string, color?: string) => {
+const jiWarn = (value?: any, label?: string, color?: string) => {
   return jilog.warn(value, label, color)
 }
 
-const jiError = (value: any, label?: string, color?: string) => {
+const jiError = (value?: any, label?: string, color?: string) => {
   return jilog.error(value, label, color)
 }
 
