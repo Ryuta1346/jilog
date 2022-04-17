@@ -1,12 +1,23 @@
 class JiLog {
-  private logCount = 0
-  private infoLogCount = 0
-  private warnLogCount = 0
-  private errorLogCount = 0
-  private logTime: number = window.performance.now()
-  private infoTime: number = window.performance.now()
-  private warnTime: number = window.performance.now()
-  private errorTime: number = window.performance.now()
+  private logCount: number
+  private infoLogCount: number
+  private warnLogCount: number
+  private errorLogCount: number
+  private logTime: number
+  private infoTime: number
+  private warnTime: number
+  private errorTime: number
+
+  constructor() {
+    this.logCount = 0
+    this.infoLogCount = 0
+    this.warnLogCount = 0
+    this.errorLogCount = 0
+    this.logTime = performance.now()
+    this.infoTime = performance.now()
+    this.warnTime = performance.now()
+    this.errorTime = performance.now()
+  }
 
   log(value: any, label = '', color = '') {
     const labelContent = label && `[${label}]`
@@ -87,19 +98,19 @@ class JiLog {
 
 const jilog = new JiLog()
 
-const jiLog = (value: any, label?: string, color?: string) => {
+const jiLog = (value?: any, label?: string, color?: string) => {
   return jilog.log(value, label, color)
 }
 
-const jiInfo = (value: any, label?: string, color?: string) => {
+const jiInfo = (value?: any, label?: string, color?: string) => {
   return jilog.info(value, label, color)
 }
 
-const jiWarn = (value: any, label?: string, color?: string) => {
+const jiWarn = (value?: any, label?: string, color?: string) => {
   return jilog.warn(value, label, color)
 }
 
-const jiError = (value: any, label?: string, color?: string) => {
+const jiError = (value?: any, label?: string, color?: string) => {
   return jilog.error(value, label, color)
 }
 
