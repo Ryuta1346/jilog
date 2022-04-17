@@ -1,6 +1,6 @@
 {
   "name": "jilog",
-  "version": "0.0.1-rc",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "types": "dist/index.d.ts",
