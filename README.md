@@ -16,7 +16,11 @@ Using jilog, you can confirm the below.
 
 ```typescript
 const SampleComponent = (props) => {
-  jilog(props)
+ /**
+  * [LOG: 0][TIME: XX milliseconds]
+  * "{example: 'example log'}" 
+  */
+  jiLog({example: 'example log'},'SampleComopnent', 'greenyellow')
 
   return (
     <div>
