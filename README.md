@@ -15,6 +15,8 @@ Using jilog, you can confirm the below.
 ## Usage
 
 ```typescript
+import { jiLog } from 'jilog/lib'
+
 const SampleComponent = (props) => {
  /**
   * [LOG: 0][TIME: XX milliseconds]
