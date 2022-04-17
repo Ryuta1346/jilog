@@ -1,30 +1,21 @@
 class JiLog {
-  private logCount: number
-  private infoLogCount: number
-  private warnLogCount: number
-  private errorLogCount: number
-  private logTime: number
-  private infoTime: number
-  private warnTime: number
-  private errorTime: number
-
-  constructor() {
-    this.logCount = 0
-    this.infoLogCount = 0
-    this.warnLogCount = 0
-    this.errorLogCount = 0
-    this.logTime = performance.now()
-    this.infoTime = performance.now()
-    this.warnTime = performance.now()
-    this.errorTime = performance.now()
-  }
+  private logCount = 0
+  private infoLogCount = 0
+  private warnLogCount = 0
+  private errorLogCount = 0
+  private logTime: number = performance.now()
+  private infoTime: number = performance.now()
+  private warnTime: number = performance.now()
+  private errorTime: number = performance.now()
 
   log(value: any, label = '', color = '') {
     const labelContent = label && `[${label}]`
     console.log(
-      `%c${labelContent}[LOG: ${this.logCount}][TIME: ${JiLog.calcPerformance(
-        this.logTime
-      )}]\n${JSON.stringify(value)} `,
+      `%c${labelContent}[LOG: ${
+        this.logCount / 2
+      }][TIME: ${JiLog.calcPerformance(this.logTime)}]\n${JSON.stringify(
+        value
+      )} `,
       `color: ${color}`
     )
     this.updateMeta('log')
@@ -34,7 +25,7 @@ class JiLog {
     const labelContent = label && `[${label}]`
     console.log(
       `%c${labelContent}[INFO: ${
-        this.infoLogCount
+        this.infoLogCount / 2
       }][TIME: ${JiLog.calcPerformance(this.infoTime)}]\n${JSON.stringify(
         value
       )} `,
@@ -47,7 +38,7 @@ class JiLog {
     const labelContent = label && `[${label}]`
     console.log(
       `%c${labelContent}[WARN: ${
-        this.warnLogCount
+        this.warnLogCount / 2
       }][TIME: ${JiLog.calcPerformance(this.warnTime)}]\n${JSON.stringify(
         value
       )} `,
@@ -60,7 +51,7 @@ class JiLog {
     const labelContent = label && `[${label}]`
     console.log(
       `%c${labelContent}[ERROR: ${
-        this.errorLogCount
+        this.errorLogCount / 2
       }][TIME: ${JiLog.calcPerformance(this.errorTime)}]\n${JSON.stringify(
         value
       )} `,
@@ -71,7 +62,7 @@ class JiLog {
 
   private static calcPerformance(time: number): string {
     const performance = window.performance.now()
-    return `${performance - time} milliseconds`
+    return `${Math.floor(performance - time)} milliseconds`
   }
 
   private updateMeta(type: string) {
