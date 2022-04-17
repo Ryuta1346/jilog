@@ -1,12 +1,12 @@
 {
   "name": "jilog",
-  "version": "0.0.1-rc",
-  "main": "dist/index.js",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
   "types": "dist/index.d.ts",
   "repository": "git@github.com:Ryuta1346/jilog.git",
   "author": "Ryuta Tashiro <ryuta.tashiro@gmail.com>",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "prepare": "husky install",
     "tsc": "tsc",
@@ -20,6 +20,10 @@
       "prettier --write"
     ]
   },
+  "files": [
+    "lib",
+    "package.json"
+  ],
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^17.0.23",
