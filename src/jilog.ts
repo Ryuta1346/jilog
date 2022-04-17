@@ -8,6 +8,7 @@ class JiLog {
   private warnTime: number = performance.now()
   private errorTime: number = performance.now()
 
+  // FIXME: this.logCount / 2
   log(value: any, label = '', color = '') {
     const labelContent = label && `[${label}]`
     console.log(
@@ -21,6 +22,7 @@ class JiLog {
     this.updateMeta('log')
   }
 
+  // FIXME: this.infoLogCount / 2
   info(value: any, label = '', color = 'green') {
     const labelContent = label && `[${label}]`
     console.log(
@@ -34,6 +36,7 @@ class JiLog {
     this.updateMeta('info')
   }
 
+  // FIXME: this.warnLogCount / 2
   warn(value: any, label = '', color = 'yellow') {
     const labelContent = label && `[${label}]`
     console.log(
@@ -47,6 +50,7 @@ class JiLog {
     this.updateMeta('warn')
   }
 
+  // FIXME: this.errorLogCount / 2
   error(value: any, label = '', color = 'red') {
     const labelContent = label && `[${label}]`
     console.log(
