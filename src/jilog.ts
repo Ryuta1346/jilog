@@ -9,8 +9,9 @@ class JiLog {
   private errorTime: number = window.performance.now()
 
   log(value: any, label = '', color = '') {
+    const labelContent = label && `[${label}]`
     console.log(
-      `%c[${label}][LOG: ${this.logCount}][TIME: ${this.calcPerformance(
+      `%c${labelContent}[LOG: ${this.logCount}][TIME: ${JiLog.calcPerformance(
         this.logTime
       )}]\n${JSON.stringify(value)} `,
       `color: ${color}`
@@ -19,40 +20,45 @@ class JiLog {
   }
 
   info(value: any, label = '', color = 'green') {
+    const labelContent = label && `[${label}]`
     console.log(
-      `%c[${label}][INFO: ${this.infoLogCount}][TIME: ${this.calcPerformance(
-        this.infoTime
-      )}]\n${JSON.stringify(value)} `,
+      `%c${labelContent}[INFO: ${
+        this.infoLogCount
+      }][TIME: ${JiLog.calcPerformance(this.infoTime)}]\n${JSON.stringify(
+        value
+      )} `,
       `color: ${color}`
     )
     this.updateMeta('info')
   }
 
   warn(value: any, label = '', color = 'yellow') {
+    const labelContent = label && `[${label}]`
     console.log(
-      `%c[${label}][WARN: ${this.warnLogCount}][TIME: ${this.calcPerformance(
-        this.warnTime
-      )}]\n${JSON.stringify(value)} `,
+      `%c${labelContent}[WARN: ${
+        this.warnLogCount
+      }][TIME: ${JiLog.calcPerformance(this.warnTime)}]\n${JSON.stringify(
+        value
+      )} `,
       `color: ${color}`
     )
-    this.warnLogCount += 1
-    this.warnTime = window.performance.now()
     this.updateMeta('warn')
   }
 
   error(value: any, label = '', color = 'red') {
+    const labelContent = label && `[${label}]`
     console.log(
-      `%c[${label}][ERROR: ${this.errorLogCount}][TIME: ${this.calcPerformance(
-        this.errorTime
-      )}]\n${JSON.stringify(value)} `,
+      `%c${labelContent}[ERROR: ${
+        this.errorLogCount
+      }][TIME: ${JiLog.calcPerformance(this.errorTime)}]\n${JSON.stringify(
+        value
+      )} `,
       `color: ${color}`
     )
-    this.errorLogCount += 1
-    this.errorTime = window.performance.now()
     this.updateMeta('error')
   }
 
-  private calcPerformance(time: number): string {
+  private static calcPerformance(time: number): string {
     const performance = window.performance.now()
     return `${performance - time} milliseconds`
   }
