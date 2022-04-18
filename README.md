@@ -31,3 +31,6 @@ const SampleComponent = (props) => {
   )
 }
 ```
+
+## MileStone
+- [ ] Accumulate logs and write them to a file after a certain time
