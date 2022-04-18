@@ -7,6 +7,14 @@ class JiLog {
   private infoTime: number = performance.now()
   private warnTime: number = performance.now()
   private errorTime: number = performance.now()
+  /* ログの外部出力機能実装
+  - ログを貯める箱を用意する
+  - 外部出力を ON にするためのフラグ対応
+    - 引数に待ち時間を渡して、それをフラグにする?
+  - 一定時間経過後に指定ファイルへの書き出しを実行
+    - 貯めたログを一括で書き出すようにして動作自体への影響抑える
+
+   */
 
   // FIXME: this.logCount / 2
   log(value: any, label = '', color = '') {
