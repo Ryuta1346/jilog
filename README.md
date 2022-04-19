@@ -19,10 +19,16 @@ import { jiLog } from 'jilog/lib'
 
 const SampleComponent = (props) => {
  /**
-  * [LOG: 0][TIME: XX milliseconds]
+  * [SampleComopnent][LOG: 0][TIME: XX milliseconds]
   * "{example: 'example log'}" 
   */
   jiLog({example: 'example log'},'SampleComopnent', 'greenyellow')
+
+ /**
+  * [LOG: 1][TIME: XX milliseconds]
+  * "{example: 'example log'}" 
+  */
+  jiLog({example: 'example log'},'', 'greenyellow')
 
   return (
     <div>
